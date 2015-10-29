@@ -16,7 +16,7 @@ class BaseWirelessInterface() -- Control a wireless network interface.
 #   Copyright (C) 2007 - 2009 Adam Blackburn
 #   Copyright (C) 2007 - 2009 Dan O'Reilly
 #   Copyright (C) 2007 - 2009 Byron Hillis
-#   Copyright (C) 2009        Andrew Psaltis
+#   Copyright (C) 2009        Andrew Psaltisa
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License Version 2 as
@@ -683,7 +683,8 @@ class BaseInterface(object):
         else:
             print "ERROR: no dhcp client found"
             ret = None
-        self.dhcp_object.wait()
+        if self.dhcp_object:
+            self.dhcp_object.wait()
         return ret
         
     @neediface(False)
